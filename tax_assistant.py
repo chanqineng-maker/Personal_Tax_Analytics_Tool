@@ -140,8 +140,8 @@ while True:
     # Show current status
     chargeable = annual_income - total_relief
     if chargeable < 0: chargeable = 0
-    print("\nCurrent Relief: $" + str(total_relief))
-    print("Current Chargeable Income: $" + str(chargeable))
+    print(f"\nCurrent Total Relief: ${total_relief:,.2f}")
+    print(f"Current Chargeable Income: ${chargeable:,.2f}")
 
 # Final Result
 print("\n--- FINAL SUMMARY ---")
@@ -153,6 +153,6 @@ if total_relief > 80000:
 final_chargeable = annual_income - total_relief
 if final_chargeable < 0: final_chargeable = 0
 
-print("Final Total Relief: $" + str(total_relief))
-print("Final Chargeable Income: $" + str(final_chargeable))
+print(f"Final Total Relief: ${total_relief:,.2f}")
+print(f"Final Chargeable Income: ${final_chargeable:,.2f}")
 print("Thank you for using the Tax Assistant!")
