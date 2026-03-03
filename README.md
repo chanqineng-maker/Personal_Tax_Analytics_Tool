@@ -33,6 +33,7 @@ Claims:
 **System Check**: Since $78,500 < $80,000, the full amount is granted.
 
 **Final Assessable Income**: $150,000 - $78,500 = **$71,500**
+![tax_assistant_test](https://github.com/user-attachments/assets/8676d591-c431-4ee4-8707-03f0f9c15548)
 
 
 
