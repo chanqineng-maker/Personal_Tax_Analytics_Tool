@@ -33,3 +33,6 @@ Claims:
 **System Check**: Since $78,500 < $80,000, the full amount is granted.
 
 **Final Assessable Income**: $150,000 - $78,500 = **$71,500**
+
+
+
