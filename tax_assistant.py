@@ -15,6 +15,8 @@ def claim_spouse_relief(): #Logic for spouse relief
         print("Spouse Income exceeds $8,000 limit. No relief granted.")
         return 0
 
+
+
 def claim_qcr_relief(): #Logic for child relief
     try:
         num_children = int(input("How many children are you claiming for? "))
@@ -42,13 +44,15 @@ def claim_qcr_relief(): #Logic for child relief
             else:
                 print("Child not eligible due to status.")
     return total_eligible_children
+
+
 def claim_wmcr_relief(): #Logic for Working Mother's Child Relief
     is_mother = input("Are you a working mother who is married, widowed, or divorced? (y/n): ").lower()
     if is_mother == "y":
         num_kids = int(input("How many children are you claiming WMCR for? "))
         wmcr_total = 0
         for i in range(1, num_kids + 1):
-            born_after_2024 = input(f"Was Child {i} born on or after 1 Jan 2024? (y/n): ").lower()
+            born_after_2024 = input("Was Child " + str(i) + " born on or after 1 Jan 2024? (y/n): ").lower()
             if born_after_2024 == "y":
                 # Fixed dollar amount for newer children
                 if i == 1: wmcr_total += 8000
@@ -64,6 +68,7 @@ def claim_wmcr_relief(): #Logic for Working Mother's Child Relief
         print("WMCR is only applicable to working mothers.")
         return 0
 
+
 def claim_grandparent_relief(): #Logic for Grandparent Caregiver Relief
     eligible = input("Are you working and have a parent/grandparent looking after your child? (y/n): ").lower()
     if eligible == "y":
@@ -71,6 +76,7 @@ def claim_grandparent_relief(): #Logic for Grandparent Caregiver Relief
         if income_check == "y":
             return 3000
     return 0
+
 
 def claim_parent_relief(): #Logic for Parent Relief
     handicapped = input("Is the parent handicapped? (y/n): ").lower()
@@ -82,6 +88,7 @@ def claim_parent_relief(): #Logic for Parent Relief
     else:
         if staying_together == "y": return 5500
         else: return 4500
+
 
 def claim_sibling_relief(): #Logic for Sibling Relief
     is_handicapped = input("Is the sibling handicapped and living in Singapore? (y/n): ").lower()
@@ -103,7 +110,7 @@ while True:
     if "6" not in claimed_reliefs: print("6. Sibling Relief (Disability)")
     print("7. Finish and calculate")
 
-    choice = input("Which relief would you like to claim? (Enter 1-6): ")
+    choice = input("Which relief would you like to claim? (Enter 1-7): ")
 
     
     if choice == "1" and "1" not in claimed_reliefs:
