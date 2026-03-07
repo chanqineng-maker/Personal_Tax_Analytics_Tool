@@ -24,11 +24,19 @@ income_input = st.text_input(
     value="" if st.session_state.annual_income == 0.0 else str(st.session_state.annual_income),
     placeholder="0.0"
 )
-try:
-    annual_income = float(income_input) if income_input else 0.0
-except ValueError:
+
+if income_input:
+    try:
+        annual_income = float(income_input)
+        if annual_income < 0:
+            st.error("❌ Please enter a positive number")
+            annual_income = 0.0
+    except ValueError:
+        annual_income = 0.0
+        st.error("❌ Please enter a valid number")
+else:
     annual_income = 0.0
-    st.error("Please enter a valid number")
+
 st.session_state.annual_income = annual_income
 
 st.divider()
@@ -37,23 +45,34 @@ st.header("Step 2: Claim Your Reliefs")
 # Spouse Relief
 if "1" not in st.session_state.claimed_reliefs:
     with st.expander("1️⃣ Spouse Relief", expanded=(st.session_state.configuring_relief == "1")):
+        # Initialize reset counter if not exists
+        if "spouse_input_key" not in st.session_state:
+            st.session_state.spouse_input_key = 0
+        
         spouse_income_input = st.text_input(
             "Spouse's annual income ($)",
-            value="" if st.session_state.get("spouse_income", 0.0) == 0.0 else str(st.session_state.get("spouse_income", 0.0)),
+            value="",
             placeholder="0.0",
-            key="spouse_income_input"
+            key=f"spouse_income_input_{st.session_state.spouse_input_key}"
         )
-        try:
-            spouse_income = float(spouse_income_input) if spouse_income_input else 0.0
-        except ValueError:
-            spouse_income = 0.0
-            st.error("Please enter a valid number")
         
-        st.session_state.spouse_income = spouse_income
+        is_valid_input = True
+        spouse_income = 0.0
+        
+        if spouse_income_input:
+            try:
+                spouse_income = float(spouse_income_input)
+                if spouse_income < 0:
+                    st.error("❌ Please enter a positive number")
+                    is_valid_input = False
+            except ValueError:
+                st.error("❌ Please enter a valid number")
+                is_valid_input = False
+        
         col_sp1, col_sp2 = st.columns(2)
         
         with col_sp1:
-            if spouse_income <= 8000:
+            if is_valid_input and spouse_income <= 8000:
                 handicapped = st.radio("Is your spouse handicapped?", ["Yes", "No"], key="spouse_handicap_input")
                 if st.button("✅ Confirm Spouse Relief", key="confirm_spouse"):
                     relief = 5500 if handicapped == "Yes" else 2000
@@ -62,13 +81,14 @@ if "1" not in st.session_state.claimed_reliefs:
                     st.session_state.configuring_relief = None
                     st.success(f"Spouse Relief claimed: ${relief:,.2f}")
                     st.rerun()
-            else:
+            elif is_valid_input and spouse_income > 8000:
                 st.error("❌ Unable to claim: Spouse income exceeds $8,000 limit")
                 st.session_state.failed_claims["1"] = "Spouse income exceeds $8,000 limit"
         
         with col_sp2:
             if st.button("❌ Cancel", key="cancel_spouse"):
                 st.session_state.configuring_relief = None
+                st.session_state.spouse_input_key += 1  # Reset input by changing key
                 st.rerun()
 else:
     st.success("✅ Spouse Relief - Claimed")
@@ -310,6 +330,8 @@ if st.button("Reset Calculator"):
     st.session_state.claimed_reliefs = []
     st.session_state.configuring_relief = None
     st.session_state.failed_claims = {}
+    if "spouse_input_key" in st.session_state:
+        st.session_state.spouse_input_key += 1
     st.rerun()
 
 st.divider()
