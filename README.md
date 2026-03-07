@@ -1,15 +1,19 @@
 # Singapore Tax Relief Assistant (Python)
 
 ## Project Overview
-While working at **IRAS**, I developed this web application to bridge the gap between complex tax relief logic and taxpayer understanding. The tool automates the logic for several Singaporean tax reliefs, helping taxpayers calculate their **Total Personal Reliefs** and **Final Assessable Income**.
+While working at **IRAS**, I developed this web application to bridge the gap between complex tax relief logic and taxpayer understanding. The tool automates the logic for several Singaporean tax reliefs, helping taxpayers calculate their **Total Personal Reliefs** and **Final Assessable Income**. 
+## App link:
 
-## Project Versions
-**Version 1.0**: Command Line Interface- Python-based chatbot for rapid logic testing.
+## Component Breakdown
+1. **Production Web App** (tax_assistant_v2.0.py): The primary user interface developed using Streamlit. It allows for real-time calculation and data visualisation.
+2. **CLI Archive** (v1.0_CLI/): Contains the original script used for rapid logic testing and backend code.
+3. **Documentation** (assets/): Storage for screenshots and demo output images.
+4. **Configuration** (requirements.txt): Essential for cloud deployment, ensuring the necessary libraries are present to run the app.
 
-**Version 2.0**: Web App- Fully interactive interface with user-end accessibility
+## Future improvements
+1. **More relief categories** : Integrating additional reliefs such as NSman Relief, CPF Cash Top-up Relief as currently only the more commonly claimed ones and the more complex logic ones are added
+2. **Data Visualisation**: Generating charts to show a breakdown of relief claims versus total taxable income for better financial planning.
 
-## Background information
-It started off as a chatbot but I wanted something more practical and also improve user interface. Thus, using the core logic in the chatbot, I created a web app using Streamlit.
 
 ## Key Features
 * **Checks eligibility of reliefs:** Spouse, QCR, WMCR, Parent, and Sibling reliefs.
