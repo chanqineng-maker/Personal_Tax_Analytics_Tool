@@ -19,7 +19,7 @@ if "failed_claims" not in st.session_state:
 
 # Input Section
 st.header("Step 1: Enter Your Annual Income")
-income_input = st.number_input(
+income_input = st.text_input(
     "What is your annual income? ($)",
     value="" if st.session_state.annual_income == 0.0 else str(st.session_state.annual_income),
     placeholder="0.0"
@@ -37,7 +37,7 @@ st.header("Step 2: Claim Your Reliefs")
 # Spouse Relief
 if "1" not in st.session_state.claimed_reliefs:
     with st.expander("1️⃣ Spouse Relief", expanded=(st.session_state.configuring_relief == "1")):
-        spouse_income_input = st.number_input(
+        spouse_income_input = st.text_input(
             "Spouse's annual income ($)",
             value="" if st.session_state.get("spouse_income", 0.0) == 0.0 else str(st.session_state.get("spouse_income", 0.0)),
             placeholder="0.0",
