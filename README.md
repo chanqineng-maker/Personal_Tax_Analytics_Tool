@@ -4,11 +4,12 @@
 While working at **IRAS**, I developed this web application to bridge the gap between complex tax relief logic and taxpayer understanding. The tool automates the logic for several Singaporean tax reliefs, helping taxpayers calculate their **Total Personal Reliefs** and **Final Assessable Income**.
 
 ## Project Versions
-# Version 1.0: Command Line Interface- Python-based chatbot for rapid logic testing.
-# Version 2.0
+**Version 1.0**: Command Line Interface- Python-based chatbot for rapid logic testing.
+
+**Version 2.0**: Web App- Fully interactive interface with user-end accessibility
 
 ## Background information
-It started off as a chatbot but I wanted something more practical and improve user interface. Thus, using the core logic in the chatbot, I created a web app using Streamlit.
+It started off as a chatbot but I wanted something more practical and also improve user interface. Thus, using the core logic in the chatbot, I created a web app using Streamlit.
 
 ## Key Features
 * **Checks eligibility of reliefs:** Spouse, QCR, WMCR, Parent, and Sibling reliefs.
