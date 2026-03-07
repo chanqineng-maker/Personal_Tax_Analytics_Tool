@@ -1,0 +1,40 @@
+# Shortcuts
+*.lnk
+*.url
+
+# Executables & Installers
+*.zip
+*.exe
+*.msi
+
+# Desktop files
+desktop.ini
+Thumbs.db
+
+# OS Files
+.DS_Store
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Environment
+.env
+venv/
+env/
+
+# Project specific
+Project.py
+Proto.py
+tax_analytics_tool.py
