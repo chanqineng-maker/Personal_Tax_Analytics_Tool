@@ -2,8 +2,8 @@
 
 ## Project Overview
 While working at **IRAS**, I developed this web application to bridge the gap between complex tax relief logic and taxpayer understanding. The tool automates the logic for several Singaporean tax reliefs, helping taxpayers calculate their **Total Personal Reliefs** and **Final Assessable Income**. 
-## App link:
-
+## Web App link:
+https://ptaxassistant.streamlit.app/
 ## Component Breakdown
 1. **Production Web App** (tax_assistant_v2.0.py): The primary user interface developed using Streamlit. It allows for real-time calculation and data visualisation.
 2. **CLI Archive** (v1.0_CLI/): Contains the original script used for rapid logic testing and backend code.
