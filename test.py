@@ -51,7 +51,7 @@ if "1" not in st.session_state.claimed_reliefs:
             key="spouse_income_num"
         )
         if spouse_income is None:
-    spouse_income = 0.0
+            spouse_income = 0.0
         st.session_state.spouse_income = spouse_income
         
         col_sp1, col_sp2 = st.columns(2)
