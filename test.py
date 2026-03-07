@@ -17,7 +17,7 @@ if "configuring_relief" not in st.session_state:
 if "failed_claims" not in st.session_state:
     st.session_state.failed_claims = {}
 
-# --- Step 1: Annual Income ---
+# Annual Income
 st.header("Step 1: Enter Your Annual Income")
 
 # Using number_input with min_value=0.0 prevents text and negative numbers
@@ -25,10 +25,13 @@ annual_income = st.number_input(
     "What is your annual income? ($)",
     min_value=0.0,
     value=st.session_state.annual_income,
+    placeholder="Type your income here...",
     step=1000.0,
     format="%.2f",
     help="Enter your total gross annual income before reliefs."
 )
+if annual_income is None:
+    annual_income = 0.0
 st.session_state.annual_income = annual_income
 
 st.divider()
@@ -41,11 +44,14 @@ if "1" not in st.session_state.claimed_reliefs:
         spouse_income = st.number_input(
             "Spouse's annual income ($)",
             min_value=0.0,
-            value=st.session_state.get("spouse_income", 0.0),
+            value= None,
+            placeholder="e.g. 5000",
             step=100.0,
             format="%.2f",
             key="spouse_income_num"
         )
+        if spouse_income is None:
+    spouse_income = 0.0
         st.session_state.spouse_income = spouse_income
         
         col_sp1, col_sp2 = st.columns(2)
